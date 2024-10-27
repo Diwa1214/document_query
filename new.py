@@ -113,6 +113,7 @@ elif choice == "🤖 Chatbot":
                     with st.spinner("🔄 Embeddings are in process..."):
                         # Create embeddings
                         result = embeddings_manager.create_embeddings(st.session_state['temp_pdf_path'])
+                        print(result,"result")
                         time.sleep(1)  # Optional: To show spinner for a bit longer
                     st.success(result)
                     
@@ -160,6 +161,7 @@ elif choice == "🤖 Chatbot":
                         answer = st.session_state['chatbot_manager'].get_response(user_input)
                         time.sleep(1)  # Simulate processing time
                     except Exception as e:
+                        print(e,"error")
                         answer = f"⚠️ An error occurred while processing your request: {e}"
                 
                 # Display chatbot message
@@ -167,17 +169,17 @@ elif choice == "🤖 Chatbot":
                 st.session_state['messages'].append({"role": "assistant", "content": answer})
 
 # Contact Page
-elif choice == "📧 Contact":
-    st.title("📬 Contact Us")
-    st.markdown("""
-    We'd love to hear from you! Whether you have a question, feedback, or want to contribute, feel free to reach out.
+# elif choice == "📧 Contact":
+#     st.title("📬 Contact Us")
+#     st.markdown("""
+#     We'd love to hear from you! Whether you have a question, feedback, or want to contribute, feel free to reach out.
 
-    - **Email:** [developer@example.com](mailto:aianytime07@gmail.com) ✉️
-    - **GitHub:** [Contribute on GitHub](https://github.com/AIAnytime/Document-Buddy-App) 🛠️
+#     - **Email:** [developer@example.com](mailto:aianytime07@gmail.com) ✉️
+#     - **GitHub:** [Contribute on GitHub](https://github.com/AIAnytime/Document-Buddy-App) 🛠️
 
-    If you'd like to request a feature or report a bug, please open a pull request on our GitHub repository. Your contributions are highly appreciated! 🙌
-    """)
+#     If you'd like to request a feature or report a bug, please open a pull request on our GitHub repository. Your contributions are highly appreciated! 🙌
+#     """)
 
-# Footer
-st.markdown("---")
-st.markdown("© 2024 Document Buddy App by AI Anytime. All rights reserved. 🛡️")
+# # Footer
+# st.markdown("---")
+# st.markdown("© 2024 Document Buddy App by AI Anytime. All rights reserved. 🛡️")

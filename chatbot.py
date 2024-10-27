@@ -5,7 +5,7 @@ from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 from langchain_community.vectorstores import Qdrant
 from langchain_ollama import ChatOllama
 from qdrant_client import QdrantClient
-from langchain import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 import streamlit as st
 
@@ -96,7 +96,7 @@ Helpful answer:
             retriever=self.retriever,
             return_source_documents=False,  # Set to False to return only 'result'
             chain_type_kwargs=self.chain_type_kwargs,
-            verbose=False
+            verbose=True
         )
 
     def get_response(self, query: str) -> str:
@@ -111,6 +111,7 @@ Helpful answer:
         """
         try:
             response = self.qa.run(query)
+
             return response  # 'response' is now a string containing only the 'result'
         except Exception as e:
             st.error(f"⚠️ An error occurred while processing your request: {e}")
